@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+http://www.springframework.org/schema/context  
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<!-- Configure annotation -->
+	<context:component-scan base-package="loginSignupForgotControler"></context:component-scan>
+	<context:annotation-config></context:annotation-config>
+
+	<!-- urlMapping <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
+		<property name="mappings"> <props> <prop key="/loginform.ds">map</prop> </props> 
+		</property> </bean> -->
+
+	<!--"jdbc:mysql://localhost:3306/login?useSSL=false""root""dadandmom" -->
+	<!-- Setting j d b c -->
+	<bean id="jdbc"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/login?useSSL=false" />
+		<property name="username" value="root" />
+		<property name="password" value="dadandmom" />
+	</bean>
+
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="jdbc" />
+	</bean>
+
+	<!-- LoginDaoConfiguration -->
+
+	<bean id="dao" class="dao.DaoLoginImp">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<!-- LoginMainController <bean id="map" class="loginSignupForgotControler.LoginController"> 
+		property name="dao" ref="dao"/ </bean> -->
+
+
+
+	<!-- view resolver -->
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
+	</bean>
+
+
+</beans>
