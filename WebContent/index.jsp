@@ -87,49 +87,14 @@
 	text-decoration: none;
 }
 
-#shows {
+#shows ,#showerror,#showssign,#showerrorsign,#showssign1,#showsuccess,#showforgotsuccess,#showforgotInvalid,
+#showforgotMismatch,#showerrorforget,#showuser
+	{
 	display: none;
 }
 
-#showerror {
-	display: none;
-}
 
-#showssign {
-	display: none;
-}
 
-#showerrorsign {
-	display: none;
-}
-
-#showssign1 {
-	display: none;
-}
-
-#showsuccess {
-	display: none;
-}
-
-#showforgotsuccess {
-	display: none;
-}
-
-#showforgotInvalid {
-	display: none;
-}
-
-#showforgotMismatch {
-	display: none;
-}
-
-#showerrorforget {
-	display: none;
-}
-
-#showuser {
-	display: none;
-}
 </style>
 <title>Welcome</title>
 </head>
